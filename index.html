@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring Staffing — Nairobi's Youth Talent Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2B4EFF;
+    --blue-dark: #1a35e0;
+    --blue-light: #eef1ff;
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray-50: #f8f8f8;
+    --gray-100: #f0f0f0;
+    --gray-300: #cccccc;
+    --gray-500: #888888;
+    --gray-700: #444444;
+    --font-display: 'Archivo Black', sans-serif;
+    --font-body: 'Archivo', sans-serif;
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nav-logo-text {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--black);
+    letter-spacing: -0.3px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-700);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    opacity: 0.6;
+    z-index: 0;
+  }
+
+  .hero-bg-2 {
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .hero-tag-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 span {
+    color: var(--blue);
+    position: relative;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--gray-700);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--black);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    border: 2px solid var(--gray-300);
+    cursor: pointer;
+  }
+
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-100);
+  }
+
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .hero-stat-label {
+    font-size: 13px;
+    color: var(--gray-500);
+    font-weight: 500;
+  }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-card {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    animation: floatCard 4s ease-in-out infinite;
+  }
+
+  .hero-card:nth-child(2) {
+    margin-left: 40px;
+    animation-delay: 2s;
+  }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .card-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--white);
+  }
+
+  .card-name { font-weight: 600; font-size: 14px; }
+  .card-role { font-size: 12px; color: var(--gray-500); }
+
+  .card-badge {
+    margin-left: auto;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+
+  .card-detail {
+    font-size: 13px;
+    color: var(--gray-700);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-detail strong { color: var(--black); font-weight: 600; }
+
+  /* SECTION BASE */
+  section { padding: 90px 5%; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    display: inline-block;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--gray-700);
+    max-width: 540px;
+    line-height: 1.7;
+  }
+
+  /* CANDIDATES */
+  .candidates { background: var(--gray-50); }
+
+  .candidates-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 2rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .benefit-icon {
+    width: 44px; height: 44px;
+    min-width: 44px;
+    border-radius: var(--radius);
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .benefit-icon svg { width: 20px; height: 20px; }
+
+  .benefit-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .benefit-desc {
+    font-size: 14px;
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+
+  .cta-box {
+    background: var(--blue);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    color: var(--white);
+  }
+
+  .cta-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .cta-box p {
+    font-size: 15px;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--blue);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.15s;
+  }
+
+  .btn-white:hover { transform: translateY(-1px); }
+
+  .roles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 1.5rem;
+  }
+
+  .role-chip {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .role-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.7);
+    flex-shrink: 0;
+  }
+
+  /* EMPLOYERS */
+  .employers { background: var(--white); }
+
+  .pricing-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-card {
+    border: 2px solid var(--gray-100);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.15s;
+    position: relative;
+  }
+
+  .pricing-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+
+  .pricing-card.featured {
+    border-color: var(--blue);
+    background: var(--blue-light);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--blue);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+  }
+
+  .pricing-tier {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .pricing-placements {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--black);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .pricing-amount {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pricing-per {
+    font-size: 12px;
+    color: var(--gray-500);
+  }
+
+  .guarantee-bar {
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: var(--radius);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #1b5e20;
+    font-weight: 500;
+  }
+
+  .guarantee-icon {
+    width: 32px; height: 32px;
+    background: #2e7d32;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .employer-benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 3rem;
+  }
+
+  .emp-benefit {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    border: 1px solid var(--gray-100);
+  }
+
+  .emp-benefit-num {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--blue);
+    opacity: 0.2;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .emp-benefit-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .emp-benefit-desc {
+    font-size: 13px;
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+
+  /* HOW IT WORKS */
+  .how { background: var(--black); color: var(--white); }
+
+  .how .section-title { color: var(--white); }
+  .how .section-sub { color: rgba(255,255,255,0.6); }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 3.5rem;
+  }
+
+  .how-side-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+  }
+
+  .how-side-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+
+  .how-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .how-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .how-step-num {
+    width: 40px; height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--blue);
+  }
+
+  .how-step-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .how-step-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  .how-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+    position: relative;
+  }
+
+  .how-divider::after {
+    content: 'vs';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--black);
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 8px 4px;
+    letter-spacing: 1px;
+  }
+
+  /* CONTACT */
+  .contact { background: var(--gray-50); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    text-decoration: none;
+    color: var(--black);
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  .contact-item:hover { border-color: var(--blue); transform: translateX(4px); }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    min-width: 44px;
+    border-radius: var(--radius);
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-icon svg { width: 20px; height: 20px; }
+
+  .contact-label {
+    font-size: 12px;
+    color: var(--gray-500);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  .contact-value {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .contact-form-box {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+  }
+
+  .contact-form-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-form-box p {
+    font-size: 14px;
+    color: var(--gray-500);
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group { margin-bottom: 16px; }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--gray-700);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--gray-100);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--black);
+    background: var(--gray-50);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--blue); background: var(--white); }
+
+  .form-group textarea { height: 90px; resize: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 5%;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--white);
+  }
+
+  .footer-note { font-size: 13px; }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  /* FADE IN */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner, .candidates-grid, .how-grid, .contact-grid, .pricing-header {
+      grid-template-columns: 1fr;
+    }
+    .how-divider { display: none; }
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .employer-benefits { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .hero-visual { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .employer-benefits { grid-template-columns: 1fr; }
+    .roles-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="19" cy="19" r="18" stroke="#2B4EFF" stroke-width="2.5"/>
+      <circle cx="19" cy="13" r="3.5" stroke="#0a0a0a" stroke-width="1.8"/>
+      <circle cx="12" cy="15" r="2.8" stroke="#0a0a0a" stroke-width="1.6"/>
+      <circle cx="26" cy="15" r="2.8" stroke="#0a0a0a" stroke-width="1.6"/>
+      <path d="M10 26c0-3.3 4-5.5 9-5.5s9 2.2 9 5.5" stroke="#0a0a0a" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M6.5 28c0-2.5 2.5-4 5.5-4" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M31.5 28c0-2.5-2.5-4-5.5-4" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M13 31.5c1.8.8 3.8 1.2 6 1.2s4.2-.4 6-1.2" stroke="#2B4EFF" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <span class="nav-logo-text">Spring Staffing</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#candidates">For Candidates</a></li>
+    <li><a href="#employers">For Employers</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-2"></div>
+  <div class="hero-inner">
+    <div class="hero-content fade-in">
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        Nairobi's Youth Talent Agency
+      </div>
+      <h1>The right people,<br><span>delivered fast.</span></h1>
+      <p class="hero-sub">Spring Staffing connects Nairobi's pre-screened young graduates with businesses that need reliable entry-level staff — within 48 hours, guaranteed.</p>
+      <div class="hero-buttons">
+        <a href="#candidates" class="btn-primary">Join the Talent Pool</a>
+        <a href="#employers" class="btn-outline">Hire Staff Now</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">48h</div>
+          <div class="hero-stat-label">Candidate delivery</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">90d</div>
+          <div class="hero-stat-label">Replacement guarantee</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">0</div>
+          <div class="hero-stat-label">Fees for candidates</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual fade-in">
+      <div class="hero-card">
+        <div class="card-header">
+          <div class="card-avatar">AK</div>
+          <div>
+            <div class="card-name">Amina Kariuki</div>
+            <div class="card-role">Sales Representative</div>
+          </div>
+          <div class="card-badge">Placed</div>
+        </div>
+        <div class="card-detail">
+          <span>Placed at</span>
+          <strong>Naivas Supermarkets</strong>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="card-header">
+          <div class="card-avatar" style="background:#1a35e0;">BM</div>
+          <div>
+            <div class="card-name">Brian Mutua</div>
+            <div class="card-role">Events Coordinator</div>
+          </div>
+          <div class="card-badge">Placed</div>
+        </div>
+        <div class="card-detail">
+          <span>Client saved</span>
+          <strong>KSh 200,000</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANDIDATES -->
+<section class="candidates" id="candidates">
+  <div class="section-inner">
+    <div class="candidates-grid">
+      <div class="fade-in">
+        <span class="section-tag">For Candidates</span>
+        <h2 class="section-title">Start earning while you build your career</h2>
+        <p class="section-sub">We place motivated graduates into real paying roles — no experience required, no fees charged. Ever.</p>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M10 2l2.4 5 5.6.8-4 3.9.9 5.3L10 14.5l-4.9 2.5.9-5.3L2 7.8l5.6-.8L10 2z" fill="white"/></svg>
+            </div>
+            <div>
+              <div class="benefit-title">Zero fees, always</div>
+              <div class="benefit-desc">We charge employers, not you. Registering and getting placed costs you absolutely nothing.</div>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.8"/><path d="M10 6v4l3 3" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="benefit-title">Fast placement — within days</div>
+              <div class="benefit-desc">Once vetted you join our active pool. When a matching role comes in we contact you immediately.</div>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="benefit-title">Real roles, real companies</div>
+              <div class="benefit-desc">We work with verified Nairobi businesses. No scams, no unpaid trials, no exploitation.</div>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M10 3c-3.9 0-7 3.1-7 7s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7zm0 3v4l2.5 2.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="benefit-title">Keep applying for your dream job</div>
+              <div class="benefit-desc">These roles fit around your goals. Earn income now while you continue building your professional career.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="cta-box">
+          <h3>Ready to get placed?</h3>
+          <p>Join hundreds of Nairobi graduates already in our talent pool. Register in 3 minutes and we'll be in touch.</p>
+          <div class="roles-grid">
+            <div class="role-chip"><span class="role-dot"></span>Sales & Marketing</div>
+            <div class="role-chip"><span class="role-dot"></span>Events & Hospitality</div>
+            <div class="role-chip"><span class="role-dot"></span>Admin & Support</div>
+            <div class="role-chip"><span class="role-dot"></span>Logistics & Ops</div>
+          </div>
+          <br>
+          <a href="#contact" class="btn-white">Register as a Candidate →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMPLOYERS -->
+<section class="employers" id="employers">
+  <div class="section-inner">
+    <div class="pricing-header fade-in">
+      <div>
+        <span class="section-tag">For Employers</span>
+        <h2 class="section-title">Stop spending weeks hiring. Get vetted staff in 48 hours.</h2>
+      </div>
+      <div>
+        <p class="section-sub">We handle sourcing, screening, and shortlisting. You just meet the candidates, approve, and they start. Simple, fast, and guaranteed.</p>
+      </div>
+    </div>
+
+    <div class="pricing-grid fade-in">
+      <div class="pricing-card">
+        <div class="pricing-tier">Standard</div>
+        <div class="pricing-placements">1 – 4<br>placements</div>
+        <div class="pricing-amount">30K</div>
+        <div class="pricing-per">KSh per person</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Silver</div>
+        <div class="pricing-placements">5 – 9<br>placements</div>
+        <div class="pricing-amount">27K</div>
+        <div class="pricing-per">KSh per person</div>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier">Gold</div>
+        <div class="pricing-placements">10 – 19<br>placements</div>
+        <div class="pricing-amount">25K</div>
+        <div class="pricing-per">KSh per person</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Platinum</div>
+        <div class="pricing-placements">20+<br>placements</div>
+        <div class="pricing-amount">20K</div>
+        <div class="pricing-per">KSh per person</div>
+      </div>
+    </div>
+
+    <div class="guarantee-bar fade-in">
+      <div class="guarantee-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span><strong>90-day replacement guarantee</strong> — if any placed candidate leaves or underperforms within 90 days we replace them at no additional cost.</span>
+    </div>
+
+    <div class="employer-benefits fade-in">
+      <div class="emp-benefit">
+        <div class="emp-benefit-num">01</div>
+        <div class="emp-benefit-title">Pre-screened candidates only</div>
+        <div class="emp-benefit-desc">Every candidate is interviewed, reference-checked, and assessed for reliability before we present them to you.</div>
+      </div>
+      <div class="emp-benefit">
+        <div class="emp-benefit-num">02</div>
+        <div class="emp-benefit-title">Delivered within 48 hours</div>
+        <div class="emp-benefit-desc">Send us your hiring brief today. Receive a shortlist of 3 ready-to-start candidates within 48 hours.</div>
+      </div>
+      <div class="emp-benefit">
+        <div class="emp-benefit-num">03</div>
+        <div class="emp-benefit-title">Volume hiring specialists</div>
+        <div class="emp-benefit-desc">Need 5, 20, or 50 people at once? We have the candidate pool to fill bulk requests fast and reliably.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <div class="fade-in">
+      <span class="section-tag" style="background:rgba(43,78,255,0.2);color:#7b9fff;">How it works</span>
+      <h2 class="section-title">Simple process.<br>Fast results.</h2>
+      <p class="section-sub">Whether you are looking for work or looking to hire — we have made the process as simple as possible.</p>
+    </div>
+    <div class="how-grid">
+      <div class="fade-in">
+        <div class="how-side-label">
+          <span class="how-side-dot"></span>
+          For candidates
+        </div>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step-num">1</div>
+            <div>
+              <div class="how-step-title">Register your profile</div>
+              <div class="how-step-desc">Fill out our quick registration form with your details, availability, and job preferences. Takes 3 minutes.</div>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">2</div>
+            <div>
+              <div class="how-step-title">Get screened and vetted</div>
+              <div class="how-step-desc">We do a short screening call or WhatsApp chat to verify your details and add you to our active talent pool.</div>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">3</div>
+            <div>
+              <div class="how-step-title">Get placed and start earning</div>
+              <div class="how-step-desc">When a matching role comes in we contact you, confirm the details, and you start — fast.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-divider"></div>
+      <div class="fade-in">
+        <div class="how-side-label">
+          <span class="how-side-dot"></span>
+          For employers
+        </div>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step-num">1</div>
+            <div>
+              <div class="how-step-title">Send us your hiring brief</div>
+              <div class="how-step-desc">Tell us the role, number of people needed, location, and start date via WhatsApp or our contact form.</div>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">2</div>
+            <div>
+              <div class="how-step-title">Receive your shortlist</div>
+              <div class="how-step-desc">Within 48 hours we deliver a shortlist of 3 pre-screened, reference-checked candidates ready to start.</div>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">3</div>
+            <div>
+              <div class="how-step-title">Approve, onboard, and go</div>
+              <div class="how-step-desc">Select your preferred candidate, we handle the paperwork, and your new team member starts. Invoice sent on day one.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="fade-in">
+      <span class="section-tag">Get in Touch</span>
+      <h2 class="section-title">Ready to get started?</h2>
+      <p class="section-sub">Whether you are a candidate looking for work or an employer needing staff — reach out and we will respond within 24 hours.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <a href="mailto:springstaffing.ke@outlook.com" class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="12" rx="2" stroke="white" stroke-width="1.8"/><path d="M2 7l8 5 8-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Email us</div>
+            <div class="contact-value">springstaffing.ke@outlook.com</div>
+          </div>
+        </a>
+        <a href="https://wa.me/254700000000" class="contact-item" target="_blank">
+          <div class="contact-icon" style="background:#25D366;">
+            <svg viewBox="0 0 20 20" fill="none"><path d="M10 2C5.6 2 2 5.6 2 10c0 1.5.4 2.9 1.1 4.1L2 18l4-1c1.2.6 2.5 1 4 1 4.4 0 8-3.6 8-8s-3.6-8-8-8z" stroke="white" stroke-width="1.6"/><path d="M7.5 8.5c.5 1 1.2 2 2 2.7.8.7 1.8 1.2 2.5 1.3.3 0 .5-.1.7-.3l.5-.5c.2-.2.2-.5 0-.7l-.8-.8c-.2-.2-.5-.2-.7 0l-.2.2c-.7-.4-1.3-1-1.7-1.7l.2-.2c.2-.2.2-.5 0-.7l-.8-.8c-.2-.2-.5-.2-.7 0l-.5.5c-.2.2-.3.5-.3.7 0 .2.1.4.1.5-.1.1 0 .2.1.4" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+254 700 000 000</div>
+          </div>
+        </a>
+        <div class="contact-item" style="cursor:default;">
+          <div class="contact-icon" style="background:#444;">
+            <svg viewBox="0 0 20 20" fill="none"><path d="M10 2C7.2 2 5 4.2 5 7c0 4 5 11 5 11s5-7 5-11c0-2.8-2.2-5-5-5z" stroke="white" stroke-width="1.8"/><circle cx="10" cy="7" r="1.5" stroke="white" stroke-width="1.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Nairobi, Kenya</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-box fade-in">
+        <h3>Send us a message</h3>
+        <p>Tell us whether you are a candidate or an employer and we will get back to you.</p>
+        <div class="form-group">
+          <label>Full name</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Phone number</label>
+          <input type="tel" placeholder="+254 7XX XXX XXX">
+        </div>
+        <div class="form-group">
+          <label>I am a</label>
+          <select>
+            <option value="">Select one</option>
+            <option>Candidate looking for work</option>
+            <option>Employer looking to hire</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us a bit about what you need..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;text-align:center;">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Spring Staffing</div>
+    <div class="footer-note">© 2025 Spring Staffing. Nairobi, Kenya. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#candidates">Candidates</a>
+      <a href="#employers">Employers</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
