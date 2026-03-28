@@ -355,13 +355,13 @@
   /* CANDIDATES */
   .candidates { background: var(--gray-50); }
 
-  .candidates-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    margin-top: 3rem;
-  }
+  .candidates-grid > .fade-in:last-child {
+  background-image: url("springstaffing/Image 1 - youths.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
 
   .benefit-list {
     display: flex;
@@ -400,21 +400,13 @@
     line-height: 1.6;
   }
 
-  .cta-box {
-    background: var(--blue);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    position: relative;
-    z-index: 2;
-    color: var(--white);
-  }
-
-  .fade-in:last-child {
-  background-image: url("springstaffing/Image 1 - youths.png");
-  background-size: cover;       /* makes image fill the area */
-  background-position: center;  /* centers the image */
+.cta-box {
+  background: rgba(0, 64, 255, 0.85); /* semi-transparent blue */
   border-radius: var(--radius-lg);
   padding: 2rem;
+  position: relative;
+  z-index: 2;
+  color: var(--white);
 }
 
   .cta-box h3 {
