@@ -257,17 +257,75 @@
 }
 
   .hero-card {
-    background: var(--white);
-    border: 1px solid var(--gray-100);
-    border-radius: var(--radius-lg);
-    padding: 20px 24px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-    animation: floatCard 4s ease-in-out infinite;
-  }
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08); /* deeper shadow for pop */
+  animation: floatCard 6s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
 
+.hero-card:hover {
+  transform: translateY(-6px); /* lift on hover */
+}
+
+/* Card header: spacing and hierarchy */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.card-name {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.card-role {
+  font-size: 13px;
+  color: var(--gray-600);
+}
+
+.card-badge {
+  background: var(--green);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* Card detail: spacing */
+.card-detail {
+  font-size: 14px;
+  color: var(--gray-700);
+  margin-top: 0.5rem;
+}
+  
  .hero-card:nth-child(2) {
   margin-top: 40px;  /* stagger down instead of margin-left */
   animation-delay: 2s;
+}
+
+  /* Float animation */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
   
   /* CANDIDATES */
