@@ -221,18 +221,19 @@
 
   .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
 
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+ .hero-stats {
+  display: flex;
+  justify-content: space-evenly; /* spreads them evenly across full width */
   text-align: center;
-  margin: 3rem auto 0;
+  margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--gray-100);
-  max-width: 1100px; /* aligns with hero-inner */
-  width: 100%;
 }
 
-
+.hero-stats > div {
+  flex: 1; /* each stat takes equal share of the row */
+}
+  
   .hero-stat-num {
     font-family: var(--font-display);
     font-size: 2rem;
@@ -247,7 +248,7 @@
     font-weight: 500;
   }
 
- .hero-visual {
+  .hero-visual {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -262,94 +263,11 @@
     animation: floatCard 4s ease-in-out infinite;
   }
 
- .hero-card:nth-child(2) {
-  margin-top: 40px;
-  animation-delay: 2s;
-}
-
-  @keyframes floatCard {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+  .hero-card:nth-child(2) {
+    margin-left: 40px;
+    animation-delay: 2s;
   }
-
-  .card-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-
-  .card-avatar {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: var(--blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 13px;
-    color: var(--white);
-  }
-
-  .card-name { font-weight: 600; font-size: 14px; }
-  .card-role { font-size: 12px; color: var(--gray-500); }
-
-  .card-badge {
-    margin-left: auto;
-    background: #e8f5e9;
-    color: #2e7d32;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 50px;
-  }
-
-  .card-detail {
-    font-size: 13px;
-    color: var(--gray-700);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .card-detail strong { color: var(--black); font-weight: 600; }
-
-  /* SECTION BASE */
-  section { padding: 90px 5%; }
-
-  .section-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-tag {
-    display: inline-block;
-    background: var(--blue-light);
-    color: var(--blue);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 5px 14px;
-    border-radius: 50px;
-    margin-bottom: 1rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    line-height: 1.15;
-    letter-spacing: -0.5px;
-    margin-bottom: 1rem;
-  }
-
-  .section-sub {
-    font-size: 1.05rem;
-    color: var(--gray-700);
-    max-width: 540px;
-    line-height: 1.7;
-  }
-
+  
   /* CANDIDATES */
   .candidates { background: var(--gray-50); }
 
