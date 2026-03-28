@@ -249,12 +249,11 @@
 
   .hero-visual {
   display: flex;
-  flex-direction: row;   /* side by side instead of stacked */
-  gap: 20px;             /* spacing between cards */
-  justify-content: flex-end; /* push them to the right edge */
-  align-items: flex-start;   /* align to the top of the column */
+  flex-direction: column;   /* keep them stacked vertically */
+  gap: 20px;                /* spacing between cards */
+  justify-content: center;  /* vertically center within the right column */
+  align-items: flex-end;    /* push them to the right edge */
 }
-
 
   .hero-card {
     background: var(--white);
@@ -265,10 +264,10 @@
     animation: floatCard 4s ease-in-out infinite;
   }
 
-  .hero-card:nth-child(2) {
-    margin-left: 40px;
-    animation-delay: 2s;
-  }
+ .hero-card:nth-child(2) {
+  margin-top: 40px;
+  animation-delay: 2s;
+}
 
   @keyframes floatCard {
     0%, 100% { transform: translateY(0); }
