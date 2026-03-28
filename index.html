@@ -355,12 +355,22 @@
   /* CANDIDATES */
   .candidates { background: var(--gray-50); }
 
+.candidates-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* left and right halves */
+  gap: 60px;
+  align-items: center;
+  margin-top: 3rem;
+}
+
 .candidates-grid > .fade-in:last-child {
   background-image: url("Image 1 - youths.png");
   background-size: cover;
   background-position: center;
   border-radius: var(--radius-lg);
-  padding: 2rem;
+  display: flex;              /* ensures the box sits inside */
+  align-items: center;        /* vertically center the box */
+  justify-content: center;    /* horizontally center the box */
   position: relative;
 }
 
