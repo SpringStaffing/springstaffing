@@ -222,18 +222,14 @@
   .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
 
   .hero-stats {
-    display: flex;
-    justify-content: space-around;
-    gap: 40px;
-    text-align: center;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--gray-100);
-  }
- 
-  .hero-stats > div {
-  flex: 1 1 150px; /* each stat can shrink/grow */
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gray-100);
+  gap: 40px;
+}
   
   .hero-stat-num {
     font-family: var(--font-display);
