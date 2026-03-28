@@ -359,18 +359,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* left and right halves */
   gap: 60px;
-  align-items: stretch;          /* make both columns equal height */
+  align-items: stretch;          /* both columns same height */
   margin-top: 3rem;
 }
 
 .candidates-grid > .fade-in:last-child {
   background-image: url("Image 1 - youths.png");
   background-size: cover;
-  background-position: center right; /* anchors image to the right */
+  background-position: center right;
   border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;   /* vertically center the box */
-  justify-content: center; /* horizontally center the box */
+  display: flex;                 /* allows centering of the box */
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
 
@@ -417,8 +417,8 @@
   padding: 2rem;
   color: var(--white);
   position: relative;
-  z-index: 2;
-  max-width: 400px; /* optional: keeps it neat */
+  z-index: 2;                     /* ensures it sits above the image */
+  max-width: 400px;
 }
 
   .cta-box h3 {
