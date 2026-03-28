@@ -248,11 +248,12 @@
   }
 
   .hero-visual {
-    .hero-visual {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+  display: flex;
+  flex-direction: column;   /* keep them stacked vertically */
+  gap: 24px;                /* spacing between cards */
+  justify-content: center;  /* vertical centering in the right column */
+  align-items: flex-end;    /* push them to the right edge */
+}
 
   .hero-card {
     background: var(--white);
