@@ -248,10 +248,13 @@
   }
 
   .hero-visual {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+  display: flex;
+  flex-direction: row;   /* side by side instead of stacked */
+  gap: 20px;             /* spacing between cards */
+  justify-content: flex-end; /* push them to the right edge */
+  align-items: flex-start;   /* align to the top of the column */
+}
+
 
   .hero-card {
     background: var(--white);
