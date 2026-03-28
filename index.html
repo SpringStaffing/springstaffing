@@ -223,14 +223,18 @@
 
   .hero-stats {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 40px;
     text-align: center;
     margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--gray-100);
   }
-
+ 
+  .hero-stats > div {
+  flex: 1 1 150px; /* each stat can shrink/grow */
+  }
+  
   .hero-stat-num {
     font-family: var(--font-display);
     font-size: 2rem;
