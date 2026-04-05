@@ -1185,28 +1185,31 @@
       </div>
       <div class="contact-form-box fade-in">
         <h3>Send us a message</h3>
-        <p>Tell us whether you are a candidate or an employer and we will get back to you.</p>
-        <div class="form-group">
-          <label>Full name</label>
-          <input type="text" placeholder="Your full name">
-        </div>
-        <div class="form-group">
-          <label>Phone number</label>
-          <input type="tel" placeholder="+254 7XX XXX XXX">
-        </div>
-        <div class="form-group">
-          <label>I am a</label>
-          <select>
-            <option value="">Select one</option>
-            <option>Candidate looking for work</option>
-            <option>Employer looking to hire</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tell us a bit about what you need..."></textarea>
-        </div>
-        <button class="btn-primary" style="width:100%;text-align:center;">Send Message</button>
+<p>Tell us whether you are a candidate or an employer and we will get back to you.</p>
+
+<form id="contactForm">
+  <div class="form-group">
+    <label>Full name</label>
+    <input type="text" id="name" placeholder="Your full name" required>
+  </div>
+  <div class="form-group">
+    <label>Phone number</label>
+    <input type="tel" id="phone" placeholder="+254 7XX XXX XXX" required>
+  </div>
+  <div class="form-group">
+    <label>I am a</label>
+    <select id="role" required>
+      <option value="">Select one</option>
+      <option>Candidate looking for work</option>
+      <option>Employer looking to hire</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Message</label>
+    <textarea id="message" placeholder="Tell us a bit about what you need..." required></textarea>
+  </div>
+  <button type="submit" class="btn-primary" style="width:100%;text-align:center;">Send Message</button>
+</form>
       </div>
     </div>
   </div>
@@ -1235,6 +1238,25 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+  <script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    role: document.getElementById("role").value,
+    message: document.getElementById("message").value
+  };
+
+  await fetch("http://localhost:3000/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  alert("Message sent successfully!");
+});
 </script>
 </body>
 </html>
