@@ -1208,23 +1208,22 @@
 </footer>
 
 <script>
-    // Create an IntersectionObserver to watch elements
+  // Create an IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Add a class when the element is visible
         entry.target.classList.add('visible');
       } else {
-        // Remove the class when it's not visible
         entry.target.classList.remove('visible');
       }
     });
   });
 
-  // Select the elements you want to observe
-  document.querySelectorAll('.footer-links a').forEach(link => {
-    observer.observe(link);
-  });
+  // Observe the footer itself
+  const footer = document.querySelector('footer');
+  if (footer) {
+    observer.observe(footer);
+  }
 </script>
 
 </body>
