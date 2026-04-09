@@ -1206,25 +1206,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-  // Create an IntersectionObserver
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
-      }
-    });
-  });
-
-  // Observe the footer itself
-  const footer = document.querySelector('footer');
-  if (footer) {
-    observer.observe(footer);
-  }
-</script>
-
+      
 </body>
 </html>
