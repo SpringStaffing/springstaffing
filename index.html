@@ -1146,7 +1146,6 @@
 </section>
 
 <!-- CONTACT -->
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="section-inner">
     <div class="fade-in">
@@ -1168,16 +1167,6 @@
       </div>
 
       <!-- Add your form here -->
-      <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Spring Staffing</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- Contact Form -->
 <div class="contact-form fade-in">
   <h3>Send us a message</h3>
   <form id="contactForm">
@@ -1219,26 +1208,6 @@
 </footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("contactForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
-    const data = {
-      name: document.getElementById("name").value,
-      phone: document.getElementById("phone").value,
-      role: document.getElementById("role").value,
-      message: document.getElementById("message").value
-    };
-
-    // This will fail on GitHub Pages unless you replace with a real backend
-    await fetch("http://localhost:3000/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
-
-    alert("Message sent successfully!");
-  });
-});
 </script>
 
 </body>
