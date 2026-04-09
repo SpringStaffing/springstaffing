@@ -1198,7 +1198,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">Spring Staffing</div>
-    <div class="footer-note">© 2026 Spring Staffing. Nairobi, Kenya. All rights reserved.</div>
+    <div class="footer-note">2026 Spring Staffing. Nairobi, Kenya. All rights reserved.</div>
     <div class="footer-links">
       <a href="#candidates">Candidates</a>
       <a href="#employers">Employers</a>
@@ -1206,7 +1206,13 @@
     </div>
   </div>
 </footer>
-
+ 
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
-
+ 
